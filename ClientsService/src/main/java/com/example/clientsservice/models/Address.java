@@ -3,6 +3,7 @@ package com.example.clientsservice.models;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 //все поля, в таблице addresses в базе, должны быть NOT NULL
 //кроме apartment
@@ -11,8 +12,6 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
-@ToString
 //
 @Entity
 @Table(name = "addresses")
@@ -43,4 +42,35 @@ public class Address {
 
     //квартира
     private String apartment;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "client_id", nullable = false,
+            foreignKey = @ForeignKey(name = "FK_address_clients"))
+    private Client client;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return Objects.equals(id, address.id) && Objects.equals(region, address.region) && Objects.equals(district, address.district) && Objects.equals(city, address.city) && Objects.equals(street, address.street) && Objects.equals(house, address.house) && Objects.equals(apartment, address.apartment);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, region, district, city, street, house, apartment);
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", region='" + region + '\'' +
+                ", district='" + district + '\'' +
+                ", city='" + city + '\'' +
+                ", street='" + street + '\'' +
+                ", house='" + house + '\'' +
+                ", apartment='" + apartment + '\'' +
+                '}';
+    }
 }

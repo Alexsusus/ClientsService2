@@ -3,7 +3,6 @@ package com.example.clientsservice.models;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -38,11 +37,21 @@ public class Client {
     @JoinTable(
             name = "clients_accounts",
             joinColumns = @JoinColumn(name = "client_id", nullable = false,
-                    foreignKey = @ForeignKey(name = "FK_clients" )),
+                    foreignKey = @ForeignKey(name = "FK_clients")),
             inverseJoinColumns = @JoinColumn(name = "account_id", nullable = false,
-                    foreignKey = @ForeignKey(name = "FK_accounts" ))
+                    foreignKey = @ForeignKey(name = "FK_accounts"))
     )
     private Set<Account> accounts;
+    // Ключи не переменовались
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "clients_addresses",
+            joinColumns = @JoinColumn(name = "client_id", nullable = false,
+                    foreignKey = @ForeignKey(name = "FK_clients")),
+            inverseJoinColumns = @JoinColumn(name = "address_id", nullable = false,
+                    foreignKey = @ForeignKey(name = "FK_addresses"))
+    )
+    private Address addresses;
 
     @Override
     public boolean equals(Object o) {
