@@ -13,6 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
+//
 @Entity
 @Table(name = "addresses")
 public class Address {

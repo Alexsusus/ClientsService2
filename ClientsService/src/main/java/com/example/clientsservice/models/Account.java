@@ -9,6 +9,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
+//
 @Entity
 @Table(name = "accounts")
 public class Account {
