@@ -39,7 +39,7 @@ public class Address {
     //номер дома
     @Column(nullable = false)
     private String house;
-
+    //
     //квартира
     private String apartment;
 
