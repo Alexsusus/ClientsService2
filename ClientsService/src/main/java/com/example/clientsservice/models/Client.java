@@ -42,15 +42,9 @@ public class Client {
                     foreignKey = @ForeignKey(name = "FK_accounts"))
     )
     private Set<Account> accounts;
-    // Ключи не переменовались
+
+
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "clients_addresses",
-            joinColumns = @JoinColumn(name = "client_id", nullable = false,
-                    foreignKey = @ForeignKey(name = "FK_clients")),
-            inverseJoinColumns = @JoinColumn(name = "address_id", nullable = false,
-                    foreignKey = @ForeignKey(name = "FK_addresses"))
-    )
     private Address addresses;
 
     @Override

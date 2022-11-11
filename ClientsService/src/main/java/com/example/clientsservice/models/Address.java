@@ -43,9 +43,8 @@ public class Address {
     //квартира
     private String apartment;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "client_id", nullable = false,
-            foreignKey = @ForeignKey(name = "FK_address_clients"))
+    @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
+    @JoinColumn(foreignKey = @ForeignKey(name = "FK_address_clients"))
     private Client client;
 
     @Override
