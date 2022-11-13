@@ -8,14 +8,7 @@
       <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="clients_service_db@localhost" uuid="7946e5ef-43f6-4c79-924e-989fe066c094">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/clients_service_db</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="clients_service_db@localhost [2]" uuid="2948287c-a2eb-44c1-b7fe-d639510bbaf8">
+    <data-source source="LOCAL" name="clients_service_db@localhost" uuid="01b019c0-b8fb-4468-bafa-07e29fd32ea7">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>

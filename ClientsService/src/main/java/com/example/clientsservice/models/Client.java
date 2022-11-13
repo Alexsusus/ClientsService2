@@ -31,8 +31,13 @@ public class Client {
     private Gender gender;
     @Column(length = 50, nullable = false, unique = true)
     private String email;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    private Address address;
+
     @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
     private Set<Phone> phones;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "clients_accounts",
@@ -44,8 +49,7 @@ public class Client {
     private Set<Account> accounts;
 
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private Address addresses;
+
 
     @Override
     public boolean equals(Object o) {

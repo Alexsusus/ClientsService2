@@ -39,7 +39,7 @@ public class Address {
     //номер дома
     @Column(nullable = false)
     private String house;
-    //
+
     //квартира
     private String apartment;
 
@@ -59,7 +59,6 @@ public class Address {
     public int hashCode() {
         return Objects.hash(id, region, district, city, street, house, apartment);
     }
-
     @Override
     public String toString() {
         return "Address{" +
