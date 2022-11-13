@@ -35,7 +35,7 @@ public class Client {
     @OneToOne(fetch = FetchType.LAZY)
     private Address address;
 
-    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
     private Set<Phone> phones;
 
     @ManyToMany(fetch = FetchType.LAZY)
