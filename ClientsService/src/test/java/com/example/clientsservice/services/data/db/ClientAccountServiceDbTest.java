@@ -1,7 +1,7 @@
 package com.example.clientsservice.services.data.db;
 
 import com.example.clientsservice.models.Account;
-import com.example.clientsservice.models.Address;
+
 import com.example.clientsservice.models.Client;
 import com.example.clientsservice.services.data.AccountService;
 import com.example.clientsservice.services.data.ClientService;

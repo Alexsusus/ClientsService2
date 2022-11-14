@@ -15,7 +15,6 @@ import java.util.List;
 
 import static com.example.clientsservice.models.Client.Gender.FEMALE;
 import static com.example.clientsservice.models.Client.Gender.MALE;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertIterableEquals;
 
 @SpringBootTest
@@ -57,21 +56,22 @@ public class ClientAddressServiceDbTest {
 
     @Test
     @Order(2)
-    void findAll(){
+    void findAll() {
         List<Address> addresses = addressService.findAll();
         System.out.println(addresses);
     }
+
     @Test
     @Order(3)
     void findAllByCollection() {
-        List<Address> original = List.of(address,address2);
+        List<Address> original = List.of(address, address2);
         List<Address> saved = addressService.findAll();
         assertIterableEquals(original, saved);
     }
 
     @Test
     @Order(4)
-    void findClientId(){
+    void findClientId() {
         Client actual = clientService.findById(client.getId());
         System.out.println(actual);
         System.out.println(actual.getAddress());

@@ -1,6 +1,6 @@
 package com.example.clientsservice.services.data.db;
 
-import com.example.clientsservice.models.Address;
+
 import com.example.clientsservice.models.Phone;
 import com.example.clientsservice.repositories.PhoneRepository;
 import com.example.clientsservice.services.data.PhoneService;

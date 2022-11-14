@@ -1,6 +1,6 @@
 package com.example.clientsservice.services.data.db;
 
-import com.example.clientsservice.models.Address;
+
 import com.example.clientsservice.models.Client;
 import com.example.clientsservice.models.Phone;
 import com.example.clientsservice.services.data.ClientService;
@@ -27,11 +27,12 @@ public class ClientPhoneServiceDbTest {
     private PhoneService phoneService;
     static Client client = new Client(0, "a", "a", "a", FEMALE,
             "a@test.com", null, null, null);
-    static Phone phone1 = new Phone(0,"111",null);
-    static Phone phone2 = new Phone(0,"222",null);
+    static Phone phone1 = new Phone(0, "111", null);
+    static Phone phone2 = new Phone(0, "222", null);
+
     @Test
     @Order(1)
-    void save(){
+    void save() {
         client = clientService.save(client);
         phone1.setClient(client);
         phone2.setClient(client);
@@ -42,7 +43,7 @@ public class ClientPhoneServiceDbTest {
 
     @Test
     @Order(2)
-    void findAll(){
+    void findAll() {
         List<Phone> addresses = phoneService.findAll();
         System.out.println(addresses);
     }
@@ -54,9 +55,10 @@ public class ClientPhoneServiceDbTest {
         List<Phone> saved = phoneService.findAll();
         assertIterableEquals(original, saved);
     }
+
     @Test
     @Order(4)
-    void findClientId(){
+    void findClientId() {
         Client actual = clientService.findById(client.getId());
         System.out.println(actual);
         System.out.println(actual.getPhones());
