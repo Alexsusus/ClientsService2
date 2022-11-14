@@ -32,13 +32,13 @@ public class Client {
     @Column(length = 50, nullable = false, unique = true)
     private String email;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     private Address address;
 
     @OneToMany(mappedBy = "client", fetch = FetchType.EAGER)
     private Set<Phone> phones;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "clients_accounts",
             joinColumns = @JoinColumn(name = "client_id", nullable = false,
