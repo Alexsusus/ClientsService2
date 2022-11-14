@@ -7,6 +7,9 @@ import com.example.clientsservice.services.data.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Set;
+
 @Service
 public class AccountServiceDb implements AccountService {
 
@@ -17,4 +20,11 @@ public class AccountServiceDb implements AccountService {
     public Account save(Account account) {
         return accountRepository.save(account);
     }
+
+    @Override
+    public List<Account> findAll() {
+        return accountRepository.findAll();
+    }
+
+
 }
