@@ -15,4 +15,6 @@ public interface ClientService {
     void deleteAll();
 
     Client findById(Integer id);
+
+    List<Client> saveAll(List<Client> clients);
 }

@@ -37,4 +37,9 @@ public class ClientServiceDb implements ClientService {
     public Client findById(Integer id) {
         return clientRepository.findById(id).get();
     }
+
+    @Override
+    public List<Client> saveAll(List<Client> clients) {
+        return clientRepository.saveAll(clients);
+    }
 }

@@ -9,4 +9,6 @@ public interface AccountService {
 
 
     List<Account> findAll();
+
+    List<Account> saveAll(List<Account> accounts);
 }

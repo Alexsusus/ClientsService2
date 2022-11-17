@@ -24,5 +24,10 @@ public class AccountServiceDb implements AccountService {
         return accountRepository.findAll();
     }
 
+    @Override
+    public List<Account> saveAll(List<Account> accounts) {
+        return accountRepository.saveAll(accounts);
+    }
+
 
 }

@@ -5,6 +5,7 @@ import com.example.clientsservice.models.Account;
 import com.example.clientsservice.models.Client;
 import com.example.clientsservice.services.data.AccountService;
 import com.example.clientsservice.services.data.ClientService;
+import org.checkerframework.checker.units.qual.C;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -36,6 +37,7 @@ public class ClientAccountServiceDbTest {
     @Test
     @Order(1)
     void save() {
+
         client = clientService.save(client);
         client2 = clientService.save(client2);
         account = accountService.save(account);
