@@ -7,6 +7,8 @@ import java.util.List;
 
 
 public interface PhoneService {
+    List<Phone> saveAll(List<Phone> phones);
+
     Phone save(Phone phone);
 
     List<Phone> findAll();
