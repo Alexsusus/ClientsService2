@@ -21,6 +21,11 @@ public class UserServiceDb implements UserService {
     }
 
     @Override
+    public List<User> saveAll(List<User> users) {
+        return userRepository.saveAll(users);
+    }
+
+    @Override
     public User save(User user) {
         return userRepository.save(user);
     }
