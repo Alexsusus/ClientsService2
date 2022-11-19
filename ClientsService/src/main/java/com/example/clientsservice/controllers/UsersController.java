@@ -1,4 +1,3 @@
-/*
 package com.example.clientsservice.controllers;
 
 import com.example.clientsservice.models.User;
@@ -27,8 +26,7 @@ public class UsersController {
         return "users";
     }
 
-*/
-/*    @PostMapping("userAddForm")
+    @PostMapping("userAddForm")
     public String clientAddForm(
             @RequestParam("username") String username,
             @RequestParam("password") String password,
@@ -38,7 +36,6 @@ public class UsersController {
         User user = new User(0,username,password,role,status);
         userService.save(user);
         return "redirect:";
-    }*//*
+    }
 
 }
-*/
