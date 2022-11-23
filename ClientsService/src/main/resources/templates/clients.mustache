@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +35,12 @@
             <td>{{patronymic}} </td>
             <td>{{gender}} </td>
             <td>{{email}} </td>
+            <td>
+                <form action="thisClientForm" method="post">
+                    <input type="hidden" name="id" value="{{id}}">
+                    <input type="submit" value="&#8942;">
+                </form>
+            </td>
         </tr> {{/clients}} </table>
 </div>
 </body>
