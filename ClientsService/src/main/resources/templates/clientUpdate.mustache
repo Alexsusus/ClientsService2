@@ -7,22 +7,20 @@
 <body>
 <div class="clientForm">
     {{#client}}
-        <form action="clientUpdateForm" method="post">
-            <input type="hidden" name="id" value="{{id}}">
-            <input type="text" name="surname" placeholder="Surname" value="{{surname}}">
-            <input type="text" name="name" placeholder="Name" value="{{name}}">
-            <input type="text" name="patronymic" placeholder="Patronymic" value="{{patronymic}}">
-            <input type="email" name="email" placeholder="Email" value="{{email}}">
+    <form action="clientUpdateForm" method="post">
+        <input type="hidden" name="id" value="{{id}}">
+        <input type="text" name="surname" placeholder="Surname" value="{{surname}}">
+        <input type="text" name="name" placeholder="Name" value="{{name}}">
+        <input type="text" name="patronymic" placeholder="Patronymic" value="{{patronymic}}">
+        <input type="email" name="email" placeholder="Email" value="{{email}}">
+        <select name="gender" id="gender">
+            {{#genders}}
+                <option value="{{key}}" {{value}}>{{key}}</option>
+            {{/genders}}
+        </select>
     {{/client}}
-    {{#gender}}
-            <select name="gender" id="gender">
-                <option value="NONE" {{NONE}}>NONE</option>
-                <option value="MALE"{{MALE}}>MALE</option>
-                <option value="FEMALE"{{FEMALE}}>FEMALE</option>
-            </select>
-            <input type="submit" value="SAVE" id="submitButton">
-        </form>
-    {{/gender}}
+    <input type="submit" value="SAVE" id="submitButton">
+</form>
 </div>
 </body>
 </html>
