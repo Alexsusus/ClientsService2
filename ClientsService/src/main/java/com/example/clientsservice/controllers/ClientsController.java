@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
-import java.util.Map;
+
 
 @Controller
 public class ClientsController {
@@ -27,7 +27,7 @@ public class ClientsController {
     @GetMapping("clients")
     public String loadClients(Model model) {
         List<Client> list = clientService.findAll();
-        model.addAttribute("clients",list);
+        model.addAttribute("clients", list);
         return "clients";
     }
 
@@ -38,16 +38,15 @@ public class ClientsController {
             @RequestParam("patronymic") String patronymic,
             @RequestParam("gender") Client.Gender gender,
             @RequestParam("email") String email
-    ){
-    Client client = new Client(0,surname,name,patronymic,gender,email,
-            null,null,null);
-    clientService.save(client);
-    return "redirect:";
+    ) {
+        Client client = new Client(0, surname, name, patronymic, gender, email,
+                null, null, null);
+        clientService.save(client);
+        return "redirect:";
     }
 
     @PostMapping("thisClientForm")
-    public ModelAndView thisClientForm(@RequestParam("id") Integer id){
-     //   return new ModelAndView("clientUpdate", Map.of("client", ) );
-        return null;
+    public ModelAndView thisClientForm(@RequestParam("id") Integer id) {
+        return new ModelAndView("clientUpdate", new ModelMap("clientId", id));
     }
 }
