@@ -1,3 +1,4 @@
+/*
 package com.example.clientsservice.controllers;
 
 import com.example.clientsservice.models.Client;
@@ -39,3 +40,4 @@ public class ClientsController {
         return new ModelAndView("redirect:clientUpdate", new ModelMap("id", id));
     }
 }
+*/
