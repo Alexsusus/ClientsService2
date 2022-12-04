@@ -1,3 +1,4 @@
+/*
 package com.example.clientsservice.controllers;
 
 import com.example.clientsservice.models.Client;
@@ -40,3 +41,4 @@ public class ClientUpdateController {
                 new ModelMap("clientId",client.getId()));
     }
 }
+*/
