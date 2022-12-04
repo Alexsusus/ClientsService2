@@ -1,3 +1,4 @@
+/*
 package com.example.clientsservice.services.data.json;
 
 import com.example.clientsservice.models.User;
@@ -26,3 +27,4 @@ public class UserServiceJsonTest {
         System.err.println(userService.findAll());
     }
 }
+*/

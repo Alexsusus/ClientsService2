@@ -1,4 +1,4 @@
-/*
+
 package com.example.clientsservice.services.data.json;
 
 import com.example.clientsservice.models.Phone;
@@ -12,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class PhoneServiceJsonTest {
 
-   // @Qualifier("phoneServiceJson")
+    @Qualifier("phoneServiceJson")
     @Autowired
     private PhoneService phoneService;
 
@@ -27,4 +27,4 @@ public class PhoneServiceJsonTest {
         System.err.println(phoneService.findAll());
     }
 }
-*/
+

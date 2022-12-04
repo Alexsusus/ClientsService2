@@ -5,12 +5,14 @@ import com.example.clientsservice.models.Phone;
 import com.example.clientsservice.services.data.PhoneService;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import org.springframework.stereotype.Service;
 
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class PhoneServiceJson implements PhoneService {
     private final String phonesFile = "phones.json";
 
