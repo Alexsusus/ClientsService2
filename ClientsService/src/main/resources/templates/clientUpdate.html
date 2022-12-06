@@ -6,21 +6,32 @@
 </head>
 <body>
 <div class="clientForm">
-  <form th:action="@{/updateClientForm}" method="post">
-    <input type="text" name="id" readonly th:value="${client.id}">
-    <input type="text" name="surname" placeholder="Surname" th:value="${client.surname}">
-    <input type="text" name="name" placeholder="Name" th:value="${client.name}">
-    <input type="text" name="patronymic" placeholder="Patronymic" th:value="${client.patronymic}">
-    <select name="gender" id="gender">
-      <option th:each="gender:${genders}" th:value="${gender}" th:utext="${gender}"
-      th:selected="${gender == client.gender}"></option>
-    </select>
-    <input type="email" name="email" placeholder="Email" th:value="${client.email}">
-    <input type="submit" value="SAVE">
-  </form>
+    <form th:action="@{/updateClientAddressForm}" method="post">
+        <div>
+            <input type="text" name="id" readonly th:value="${client.id}">
+            <input type="text" name="surname" placeholder="Surname" th:value="${client.surname}">
+            <input type="text" name="name" placeholder="Name" th:value="${client.name}">
+            <input type="text" name="patronymic" placeholder="Patronymic" th:value="${client.patronymic}">
+            <select name="gender" id="gender">
+                <option th:each="gender:${genders}" th:value="${gender}" th:utext="${gender}"
+                        th:selected="${gender == client.gender}"></option>
+            </select>
+            <input type="email" name="email" placeholder="Email" th:value="${client.email}">
+        </div>
+        <div th:object="${client.address}">
+            <input type="text" name="idAddress" placeholder="ID" th:value="*{id}">
+            <input type="text" name="region" placeholder="Region" th:value="*{region}">
+            <input type="text" name="district" placeholder="District" th:value="*{district}">
+            <input type="text" name="city" placeholder="City" th:value="*{city}">
+            <input type="text" name="street" placeholder="Street" th:value="*{street}">
+            <input type="text" name="house" placeholder="House" th:value="*{house}">
+            <input type="text" name="apartment" placeholder="Apartment" th:value="*{apartment}">
+        </div>
+            <input type="submit" value="SAVE">
+    </form>
 </div>
 <div class="addressForm">
-  <form action="" method="post"></form>
+    <form action="" method="post"></form>
 </div>
 </body>
 </html>
