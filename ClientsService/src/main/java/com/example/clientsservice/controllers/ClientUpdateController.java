@@ -2,8 +2,10 @@ package com.example.clientsservice.controllers;
 
 import com.example.clientsservice.models.Address;
 import com.example.clientsservice.models.Client;
+import com.example.clientsservice.models.Phone;
 import com.example.clientsservice.services.data.AddressService;
 import com.example.clientsservice.services.data.ClientService;
+import com.example.clientsservice.services.data.PhoneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Set;
+
 @Controller
 public class ClientUpdateController {
     @Autowired
@@ -21,6 +25,9 @@ public class ClientUpdateController {
 
     @Autowired
     private AddressService addressService;
+
+    @Autowired
+    private PhoneService phoneService;
 
     @GetMapping("clientUpdate")
     public String load(@RequestParam("id") Integer id, Model model) {
@@ -51,6 +58,21 @@ public class ClientUpdateController {
         System.err.println(address);
         address = addressService.save(address);
         client.setAddress(address);
+        clientService.save(client);
+        return new ModelAndView("redirect:clientUpdate",
+                new ModelMap("id", client.getId()));
+    }
+
+    @PostMapping("updateClientPhoneForm")
+    public ModelAndView updateClientPhoneForm(
+            @ModelAttribute Client client,
+            @ModelAttribute Phone phone,
+            @RequestParam(value = "idPhone", required = false) Integer idPhone
+    ){
+        phone.setId(idPhone);
+        phone.setClient(client);
+        phone = phoneService.save(phone);
+        client.setPhones(Set.of(phone));
         clientService.save(client);
         return new ModelAndView("redirect:clientUpdate",
                 new ModelMap("id", client.getId()));
