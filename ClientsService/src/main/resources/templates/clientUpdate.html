@@ -17,6 +17,7 @@
                         th:selected="${gender == client.gender}"></option>
             </select>
             <input type="email" name="email" placeholder="Email" th:value="${client.email}">
+            <input type="date" name="birthDate" th:value="${client.birthDate}">
         </div>
         <div th:object="${client.address}">
             <input type="text" name="idAddress" placeholder="ID" th:value="*{id}">
