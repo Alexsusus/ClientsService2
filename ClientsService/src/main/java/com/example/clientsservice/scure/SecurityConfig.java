@@ -2,7 +2,13 @@ package com.example.clientsservice.scure;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
@@ -15,7 +21,7 @@ public class SecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
+    //@Bean
     public InMemoryUserDetailsManager inMemory(BCryptPasswordEncoder encoder) {
         return new InMemoryUserDetailsManager(
                 User.builder()
@@ -32,4 +38,28 @@ public class SecurityConfig {
                         .build()
         );
     }
+
+    @Bean
+    public AuthenticationManager authManager(
+            HttpSecurity security,
+            BCryptPasswordEncoder passwordEncoder,
+            UserDetailsService userDetailsService
+    ) throws Exception {
+        System.err.println("authManager");
+        return security.getSharedObject(
+                        AuthenticationManagerBuilder.class)
+                .userDetailsService(userDetailsService)
+                .passwordEncoder(passwordEncoder)
+                .and().build();
+
+    }
+
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer(){
+        return customizer ->
+                customizer.debug(true)
+                        .ignoring()
+                        .antMatchers()
+    }
+
 }

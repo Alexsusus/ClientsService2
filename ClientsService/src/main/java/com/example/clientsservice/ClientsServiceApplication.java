@@ -1,12 +1,15 @@
 package com.example.clientsservice;
 
 import com.example.clientsservice.models.Client;
+import com.example.clientsservice.models.User;
 import com.example.clientsservice.repositories.ClientRepository;
+import com.example.clientsservice.services.data.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.List;
 
@@ -21,16 +24,33 @@ public class ClientsServiceApplication {
 
     private final ClientRepository clientRepository;
 
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    BCryptPasswordEncoder passwordEncoder;
+
     public ClientsServiceApplication(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
     }
 
-//    @EventListener(ApplicationReadyEvent.class)
+    @EventListener(ApplicationReadyEvent.class)
     public void applicationReady() {
-        Client a = new Client(0, "a", "a", "a", MALE, "a@test.com",
+        /*Client a = new Client(0, "a", "a", "a", MALE, "a@test.com",
                 null, null, null);
         Client b = new Client(0, "b", "b", "b", MALE, "b@test.com",
                 null, null, null);
-        clientRepository.saveAll(List.of(a, b));
+        clientRepository.saveAll(List.of(a, b));*/
+        //users
+        User admin = new User(0, "a", "a", User.Role.ADMIN, User.Status.ACTIVE,
+                "a@tstgmail.com");
+        User user = new User(0, "u", "u", User.Role.USER, User.Status.ACTIVE,
+                "u@tstgmail.com");
+        admin.setPassword(passwordEncoder.encode(admin.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        userService.save(admin);
+        userService.save(user);
+
+
     }
 }
