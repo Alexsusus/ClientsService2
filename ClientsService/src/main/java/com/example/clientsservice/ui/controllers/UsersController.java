@@ -24,7 +24,6 @@ public class UsersController {
     public String load(Model model) {
         List<User> list = userService.findAll();
         model.addAttribute("users", list);
-        //
         model.addAttribute("roles", User.Role.values());
         model.addAttribute("statuses", User.Status.values());
         return "users";

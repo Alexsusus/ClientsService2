@@ -3,6 +3,8 @@ package com.example.clientsservice.repositories;
 import com.example.clientsservice.models.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AccountRepository extends JpaRepository<Account,Long> {
+import java.util.List;
 
+public interface AccountRepository extends JpaRepository<Account,Long> {
+    List<Account> findAllByAmountEquals(int amount);
 }

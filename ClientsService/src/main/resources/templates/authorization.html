@@ -5,11 +5,15 @@
     <title>Authorization</title>
     <th:block th:insert="~{fragments/headSettings::headSettings}"></th:block>
 </head>
-<body><th:block th:insert="~{fragments/pageHeader::pageHeader}"></th:block></body>
+<body>
+<th:block th:insert="~{fragments/pageHeader::pageHeader}"></th:block>
+</body>
 <div class="formDiv">
-    <form th:action="authorizationForm"></form>
-    <input type="text" name="username" placeholder="Username">
-    <input type="password" name="password" placeholder="Password">
-    <input type="submit" value="Login" style="width: 100px">
+    <form action="authorization" method="post">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.getToken()}">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <input type="submit" value="Login" style="width: 100px">
+    </form>
 </div>
 </html>

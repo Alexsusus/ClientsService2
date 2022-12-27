@@ -2,6 +2,7 @@ package com.example.clientsservice.scure;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,6 +12,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
 
 import static com.example.clientsservice.models.User.Role.*;
 
@@ -54,12 +56,57 @@ public class SecurityConfig {
 
     }
 
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer(){
+    //@Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
         return customizer ->
                 customizer.debug(true)
                         .ignoring()
-                        .antMatchers()
+                        //    .anyRequest()
+                        .antMatchers("/ccs/**")
+                        .antMatchers("/registration")
+                        .mvcMatchers(HttpMethod.POST, "/registration")
+                ;
+    }
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity
+                //.csrf().disable()
+                .authorizeRequests()
+                .antMatchers(
+                        "/error",
+                        "/registration"
+                )
+                .permitAll()
+                //
+                .antMatchers(
+                        "/",
+                        "/clients"
+                )
+                .authenticated()
+                .antMatchers(
+                        "/users"
+                )
+                .hasAnyAuthority(
+                        ADMIN.name()
+                )
+                //
+                .and()
+                .formLogin()
+                .loginPage(
+                        "/authorization"
+                )
+                //
+                .and()
+                .logout()
+               /* .logoutUrl(
+                        "j_spring_security_logout"
+                )*/
+                .logoutSuccessUrl(
+                        "/authorization"
+                )
+        ;
+        return httpSecurity.build();
     }
 
 }
