@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Phones</title>
+</head>
+<body>
+<div class="phoneForm">
+    <form th:action="@{/addPhoneForm}" method="post">
+        <input type="text" name="phone" placeholder="Phone">
+        <input type="submit" value="SAVE">
+    </form>
+</div>
+<div class="table">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Phone</th>
+        </tr>
+        <tr th:each="phone:${phones}">
+            <td th:utext="${phone.id}"></td>
+            <td th:utext="${phone.phone}"></td>
+            <td>
+                <form th:action="@{/openPhoneForm}" method="post">
+                    <input type="hidden" name="id" th:value="${phone.id}">
+                    <input type="submit" value="&#8942;">
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

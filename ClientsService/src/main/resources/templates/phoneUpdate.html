@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Phone Update</title>
+</head>
+<body>
+<div class="phoneForm">
+  <form th:action="@{/updatePhoneForm}" method="post">
+    <input type="text" name="id" readonly th:value="${phone.id}">
+    <input type="text" name="Phone" placeholder="Phone" th:value="${phone.phone}">
+    <input type="submit" value="SAVE">
+  </form>
+</div>
+</body>
+</html>

@@ -27,7 +27,7 @@ public class UserUpdateController {
     }
 
     @PostMapping("updateUserForm")
-    public ModelAndView updateClientForm(@ModelAttribute User user){
+    public ModelAndView updateUserForm(@ModelAttribute User user){
         userService.save(user);
         return new ModelAndView("redirect:userUpdate",
                 new ModelMap("id", user.getId()));

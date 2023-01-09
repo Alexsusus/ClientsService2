@@ -1,12 +1,11 @@
 package com.example.clientsservice;
 
 import com.example.clientsservice.models.Client;
+import com.example.clientsservice.models.Phone;
 import com.example.clientsservice.repositories.ClientRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.clientsservice.repositories.PhoneRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class ClientsServiceApplication {
 
     private final ClientRepository clientRepository;
 
-    public ClientsServiceApplication(ClientRepository clientRepository) {
+    public ClientsServiceApplication(ClientRepository clientRepository, PhoneRepository phoneRepository) {
         this.clientRepository = clientRepository;
     }
 
@@ -31,6 +30,9 @@ public class ClientsServiceApplication {
                 null, null, null);
         Client b = new Client(0, "b", "b", "b", MALE, "b@test.com",
                 null, null, null);
+
+
+
         clientRepository.saveAll(List.of(a, b));
     }
 }

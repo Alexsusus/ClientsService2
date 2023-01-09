@@ -22,7 +22,7 @@ public class Phone {
     private String phone;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "client_id", nullable = false,
+    @JoinColumn(name = "client_id", nullable = true, //false,
     foreignKey = @ForeignKey(name = "FK_phones_clients"))
     private Client client;
 

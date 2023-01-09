@@ -1,6 +1,7 @@
 package com.example.clientsservice.services.data.db;
 
 
+import com.example.clientsservice.models.Client;
 import com.example.clientsservice.models.Phone;
 import com.example.clientsservice.repositories.PhoneRepository;
 import com.example.clientsservice.services.data.PhoneService;
@@ -24,4 +25,10 @@ public class PhoneServiceDb implements PhoneService {
     public List<Phone> findAll() {
         return phoneRepository.findAll();
     }
+
+    @Override
+    public Phone findById(Integer id) {
+        return phoneRepository.findById(id).get();
+    }
 }
+
