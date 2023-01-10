@@ -1,6 +1,7 @@
 package com.example.clientsservice.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
@@ -9,9 +10,8 @@ import org.springframework.stereotype.Service;
 public class MailingService {
     public static final String subject = "Account balance";
     public static final String text = "yours account balance is 0";
-    @Autowired
-    private JavaMailSender javaMailSender;
 
+    private JavaMailSender javaMailSender;
 
     public void sendMail(final String toAddress, String surname) {
         SimpleMailMessage message = new SimpleMailMessage();
