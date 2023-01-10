@@ -20,14 +20,14 @@ public class AccountEmptyService {
     @Autowired
     private MailingService mailingService;
 
-    @Async
+   // @Async
     public Future<List<Account>> checkAccounts() {
         List<Account> accountList = accountService.findAllByAmountEquals(0);
         return new AsyncResult<>(accountList);
     }
 
-    @Scheduled(cron = "*/2 * * * *", zone = "Europe/Kiev")
-    @Async
+   // @Scheduled(cron = "*/2 * * * *", zone = "Europe/Kiev")
+   // @Async
     public void start() {
         try {
             Future<List<Account>> future = checkAccounts();
@@ -36,7 +36,7 @@ public class AccountEmptyService {
                 List<Account> accountList = future.get();
                 for (Account account : accountList) {
                     for (Client client : account.getClients()) {
-                        mailingService.sendMail(client.getEmail(), client.getSurname());
+                       // mailingService.sendMail(client.getEmail(), client.getSurname());
 
                     }
 

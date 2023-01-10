@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class MailingService {
     public static final String subject = "Account balance";
     public static final String text = "yours account balance is 0";
-    @Autowired
+   /* @Autowired
     private JavaMailSender javaMailSender;
 
 
@@ -19,5 +19,5 @@ public class MailingService {
         message.setSubject(subject);
         message.setText(surname + " " + text);
         javaMailSender.send(message);
-    }
+    }*/
 }
